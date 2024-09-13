@@ -6,6 +6,24 @@ const App = () => {
     const [result, setResult] = useState('');
     const [loading, setLoading] = useState('');
 
+    const handleUserButtonClick = (value) => {
+        setExpression(prev => prev + value);
+    }
+
+    const handleClearExpression = () => {
+       
+    }
+
+    const handleCalculateExpression = () => {
+
+    }
+
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+          e.preventDefault();
+          handleCalculateExpression();
+      }
+  }
 
     return (
         <div className="calculator">
@@ -14,6 +32,7 @@ const App = () => {
                     type="text"
                     value={expression}
                     onChange={(e) => setExpression(e.target.value)}
+                    onKeyDown={handleKeyPress}
                     className="expression-input"
                     placeholder="Enter expression"
                 />
@@ -28,7 +47,15 @@ const App = () => {
                   'C', 'cot', 'csc', '='].map((btn) => (
                     <button
                       key={btn}
-                      
+                      onClick={() => {
+                          if (btn === 'C') {
+                              handleClearExpression();
+                          } else if (btn === '=') {
+                              handleCalculateExpression();
+                          } else {
+                              handleUserButtonClick(btn);
+                          }
+                      }}
                     >
                       {btn}
                     </button>
