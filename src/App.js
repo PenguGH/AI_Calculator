@@ -11,7 +11,8 @@ const App = () => {
     }
 
     const handleClearExpression = () => {
-       
+        setExpression('');
+        setResult('');
     }
 
     const handleCalculateExpression = () => {
