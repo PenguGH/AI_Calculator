@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import './App.css'; // Importing css for styling
 
 const App = () => {
+    const genAI = new GoogleGenerativeAI('YOUR_API_KEY_HERE');
     const [expression, setExpression] = useState('');
     const [result, setResult] = useState('');
-    const [loading, setLoading] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleUserButtonClick = (value) => {
         setExpression(prev => prev + value);
@@ -16,15 +18,15 @@ const App = () => {
     }
 
     const handleCalculateExpression = () => {
-
+        
     }
 
     const handleKeyPress = (e) => {
-      if (e.key === 'Enter') {
-          e.preventDefault();
-          handleCalculateExpression();
-      }
-  }
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleCalculateExpression();
+        }
+    }
 
     return (
         <div className="calculator">
