@@ -38,6 +38,7 @@ const App = () => {
                     onKeyDown={handleKeyPress}
                     className="expression-input"
                     placeholder="Enter expression"
+                    readOnly
                 />
             </div>
             <div className="buttons">
